@@ -1,0 +1,32 @@
+/* How we can add event handling in the counter application to do re-rendering thorugh website */
+/* How we can add event handling in the counter application to do re-rendering thorugh website */
+import {useState} from 'react'
+// As we are using refactoring the whole function to single line but do not oversimplify your //components then it will be compicate to add complexity
+const Display = ({counter}) => <div>{counter}</div> 
+const Button = ({event, text}) => <button onClick = {event}> {text} </button>
+const App = () => {
+const [counter, setCounter] = useState(0)
+
+// We can put this function in the button JSX syntax but it will complicate things and its a bad //thing to do it.
+
+const increaseCounter = () => setCounter(counter+1)
+const decreaseCounter = () => setCounter(counter-1)
+const resetCounter = () => setCounter(0)
+
+	return(
+	<div>
+		<Display counter ={counter} />
+		<Button event={increaseCounter} text='plus' />
+		<Button event={decreaseCounter} text='minus' />
+		<Button event={resetCounter} text='zero' />
+
+	</div>)
+}
+
+export default App/>
+		<Button event={increaseCounter} text='plus' />
+		<Button event={decreaseCounter} text='minus' />
+		<Button event={resetCounter} text='zero' />
+
+	</div>)
+}

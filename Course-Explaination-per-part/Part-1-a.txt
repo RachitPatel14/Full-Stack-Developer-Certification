@@ -1,0 +1,67 @@
+Part 1 a - Introduction to React
+
+The easiest way to get started by far is by using a tool called create-react-app. It is possible (but not necessary) to install create-react-app on your machine if the npm tool that was installed along with Node has a version number of at least 5.3.
+
+-> Syntax to create react project
+-> npx create-react-app part1
+   cd part1
+
+Default browser will use localhost: 3000 to host the project after successfull run
+
+There will be two major file 
+1) App.js - Which have react component app with JSX syntax with full power of JS 
+
+2) Index.js - then we export that component to Index.js to render in html file with the help of id element used in that file.
+
+In these JSX format we can use full power of JS within {} curly brackets and the JSX syntax looks similar to HTML elements but the compiler will create those JSX  through react.createElement. 
+
+-> for example this is our return of the react component in app.js with JSX
+	
+	  return (
+	    <div>
+	      <p>Hello world, it is {now.toString()}</p>
+	      <p>
+	        {a} plus {b} is {a + b}
+	      </p>
+	    </div>
+	  )
+-> Then the compiler will look like this
+	return React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'p', null, 'Hello world, it is ', now.toString()
+    ),
+    React.createElement(
+      'p', null, a, ' plus ', b, ' is ', a + b
+    )
+  )
+
+All JSX is "XML -like" which means that every tag needs to be closed. 
+-> For example <br> in HTML does not have a closing tag where as in JSX it will look like this <br />.
+
+In app.js can have multiple components and in the app component we can use like this 
+-> const Hello = () => { has some code} and then in app.js return statement we can use "<Hello />" tag to use that component.
+
+In this components we can use props: passing data to components like this
+
+-> const Hello = (props) => {  return (
+    <div>
+      <p>Hello {props.name}</p>    </div>
+  )
+}
+
+-> In app.js it will look like this <Hello name='Rachit' />.
+-> We can use multiple props also like props.age in the code above and usage will be like this
+		<Hello name='Rachit' age= 20 or {10+10} or a harcode value like = {age} where this age will be a const variable with values.
+Component Hello also logs the value of the object props to the console.
+
+																				Some Notes
+->	All the react component should start with a capital letter and without that it will create a built 			in HTML element instead of the react element of the same name. 
+->  Use console.log every time to log all the details of the project for debugging.
+->	All react component should have one root element but there are ways to compile the code without
+		using the root element like we can use as an array object or may be an empty element like this
+		return [ code here ] or return ( <> code here </>).
+->  Object are not rendered as a react child and the main reason is the curly braces we use generally 
+		works for one value like string or number but can not take a whole object as a value. 
+->  But we can say if Friends array of objects with name and age then we can use Friends[0].name or Friends[0].age. 
