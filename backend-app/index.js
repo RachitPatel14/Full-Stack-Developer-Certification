@@ -1,8 +1,10 @@
 const { request, response } = require('express')
 const express = require('express')
+const cors = require('cors')
 const app = express()
-
 app.use(express.json())
+app.use(express.static('build'))
+app.use(cors())
 let notes = [  
 {    id: 1,    content: "HTML is easy",    important: true  },  
 {    id: 2,    content: "Browser can execute only JavaScript",    important: false  },  
@@ -56,7 +58,7 @@ app.delete('/api/notes/:id', (request, response) => {
 
     response.status(204).end()
 })
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
 console.log(`Server running on ${PORT}`)
 })
